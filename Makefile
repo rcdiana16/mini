@@ -6,11 +6,7 @@
 #    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 11:45:57 by diana             #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2025/04/23 15:13:23 by diana            ###   ########.fr        #
-=======
 #    Updated: 2025/05/06 18:47:56 by diana            ###   ########.fr        #
->>>>>>> main
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,32 +25,21 @@ SRCS            = main.c \
 					src/input/get_input_utils.c \
 					src/input/utils_input.c \
 					src/input/utils_input_2.c \
-<<<<<<< HEAD
-=======
 					src/input/utils_replace_tok.c \
->>>>>>> main
 					src/input/rep_env_var.c \
 					src/input/rep_env_var_utils.c \
-					src/input/rep_env_var_utils_2.c \
 					src/input/handle_input.c \
 					src/input/quote.c \
 					src/input/redirection.c \
 					src/input/verify_and_split_cmd.c \
 					src/input/verify_and_split_cmd_utils.c \
-<<<<<<< HEAD
-=======
 					src/input/verify_and_split_cmd_utils_bis.c \
 					src/input/verify_and_split_cmd_split.c \
->>>>>>> main
 					src/input/check_syntax.c \
 					src/input/check_syntax_utils.c \
 					src/input/count_sp_ch.c \
 					src/execute/execute_utils.c \
-<<<<<<< HEAD
-					src/execute/execute_2.c \
-=======
 					src/execute/execute_utils_exit.c \
->>>>>>> main
 					src/execute/execute.c \
 					src/execute/execute_error.c \
 					src/execute/execute_error_utils.c \

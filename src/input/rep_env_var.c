@@ -6,11 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 15:14:46 by cosmos            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/23 17:29:25 by diana            ###   ########.fr       */
-=======
 /*   Updated: 2025/04/27 22:12:34 by diana            ###   ########.fr       */
->>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +106,6 @@ int	process_env_var(t_cmd_state *state, char *result, int j, t_env *env_mini)
 	}
 	return (j);
 }
-<<<<<<< HEAD
-=======
 
 char	*replace_env_vars(char *cmd, t_env *env_mini, t_shell *shell)
 {
@@ -129,4 +123,3 @@ char	*replace_env_vars(char *cmd, t_env *env_mini, t_shell *shell)
 		return (NULL);
 	return (process_replace_env_vars(&state, result, &shell_env));
 }
->>>>>>> main

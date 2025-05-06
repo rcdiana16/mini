@@ -5,20 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2025/03/31 17:21:56 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/04/23 17:42:39 by diana            ###   ########.fr       */
-=======
 /*   Created: 2025/05/05 23:00:02 by diana             #+#    #+#             */
 /*   Updated: 2025/05/05 23:10:33 by diana            ###   ########.fr       */
->>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 void	split_double_redirection(char **tokens, \
-		char **new_tokens, int *i, int *j)
+	char **new_tokens, int *i, int *j)
 {
 	char	*redir;
 	char	*rest;
@@ -78,14 +73,9 @@ t_command	*verify_and_split_command(char *cmd, t_env *env_mini, \
 	cmd_info->tokens = split_joined_redirections(cmd_info->tokens);
 	if (cmd_info->tokens[1] == NULL && \
 		is_invalid_single_token(cmd_info->tokens[0]))
-<<<<<<< HEAD
-		return (handle_token_error(cmd_info, shell, 2, NULL));
-	ret = check_syntax(cmd_info->tokens, &bad_token); // pass bad_token
-=======
 		return (handle_token_error(cmd_info, shell, \
 				2, NULL));
 	ret = check_syntax(cmd_info->tokens, &bad_token);
->>>>>>> main
 	cmd_info = handle_syntax_errors(cmd_info, shell, ret, bad_token);
 	if (!cmd_info)
 		return (NULL);

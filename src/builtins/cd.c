@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:36:55 by diana             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/23 10:57:57 by diana            ###   ########.fr       */
-=======
 /*   Updated: 2025/04/28 11:15:05 by maximemarti      ###   ########.fr       */
->>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +50,6 @@ int	is_valid_path(char *path, t_env *env_mini, t_command *cmd_info, char **cmd)
 			cmd_info->exit_code = 1;
 			return (1);
 		}
-<<<<<<< HEAD
-		// Print the directory to which we change (like Bash)
-=======
->>>>>>> main
 		write(1, path, ft_strlen(path));
 		write(1, "\n", 1);
 	}

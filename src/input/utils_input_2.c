@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2025/04/23 11:12:44 by diana             #+#    #+#             */
-/*   Updated: 2025/04/23 17:39:19 by diana            ###   ########.fr       */
-=======
 /*   Created: 2025/04/27 22:36:16 by diana             #+#    #+#             */
 /*   Updated: 2025/05/05 15:29:15 by diana            ###   ########.fr       */
->>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +22,7 @@ t_command	*initialize_command(t_shell *shell)
 	if (!cmd_info)
 		return (NULL);
 	cmd_info->c_pipe = 0;
-<<<<<<< HEAD
-=======
 	cmd_info->envp = NULL;
->>>>>>> main
 	cmd_info->flag = 0;
 	cmd_info->c_red_i = 0;
 	cmd_info->here_doc = 0;
@@ -40,24 +32,16 @@ t_command	*initialize_command(t_shell *shell)
 	cmd_info->exit_code = 0;
 	cmd_info->file_out = NULL;
 	cmd_info->file_in = NULL;
-<<<<<<< HEAD
-	cmd_info->c_append = 0;
-	cmd_info->flag_test = 0;
-=======
 	cmd_info->fd_here_doc = 0;
 	cmd_info->c_append = 0;
 	cmd_info->flag_test = 0;
 	cmd_info->og_stdout = dup(STDOUT_FILENO);
 	cmd_info->og_stdin = dup(STDIN_FILENO);
->>>>>>> main
 	return (cmd_info);
 }
 
 void	handle_single_quotes(t_command *cmd_info, int i)
 {
-<<<<<<< HEAD
-	make_good_cmd(cmd_info->tokens[i]);
-=======
 	if (cmd_info->tokens[i])
 		make_good_cmd(cmd_info->tokens[i]);
 }
@@ -81,5 +65,4 @@ void	process_tokens(t_command *cmd_info, t_env *env_mini, t_shell *shell)
 		}
 		i++;
 	}
->>>>>>> main
 }
