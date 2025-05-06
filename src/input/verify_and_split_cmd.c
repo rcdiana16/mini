@@ -1,0 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verify_and_split_cmd_split.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
+/*   Created: 2025/03/31 17:21:56 by maximemarti       #+#    #+#             */
+/*   Updated: 2025/04/23 17:42:39 by diana            ###   ########.fr       */
+=======
+/*   Created: 2025/05/05 23:00:02 by diana             #+#    #+#             */
+/*   Updated: 2025/05/05 23:10:33 by diana            ###   ########.fr       */
+>>>>>>> main
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/minishell.h"
+
+void	split_double_redirection(char **tokens, \
+		char **new_tokens, int *i, int *j)
+{
+	char	*redir;
+	char	*rest;
+
+	redir = ft_substr(tokens[*i], 0, 2);
+	rest = ft_strdup(tokens[*i] + 2);
+	if (rest && rest[0] != '\0')
+	{
+		new_tokens[(*j)++] = redir;
+		new_tokens[(*j)++] = rest;
+	}
+	else
+	{
+		free(redir);
+		free(rest);
+		new_tokens[(*j)++] = ft_strdup(tokens[*i]);
+	}
+}
+
+void	split_single_redirection(char **tokens, \
+			char **new_tokens, int *i, int *j)
+{
+	char	*redir;
+	char	*rest;
+
+	redir = ft_substr(tokens[*i], 0, 1);
+	rest = ft_strdup(tokens[*i] + 1);
+	if (rest && rest[0] != '\0')
+	{
+		new_tokens[(*j)++] = redir;
+		new_tokens[(*j)++] = rest;
+	}
+	else
+	{
+		free(redir);
+		free(rest);
+		new_tokens[(*j)++] = ft_strdup(tokens[*i]);
+	}
+}
+
+t_command	*verify_and_split_command(char *cmd, t_env *env_mini, \
+			t_shell *shell)
+{
+	t_command	*cmd_info;
+	int			ret;
+	char		*bad_token;
+
+	bad_token = NULL;
+	cmd_info = initialize_command(shell);
+	if (!cmd_info)
+		return (NULL);
+	count_special_chars(cmd, cmd_info);
+	cmd_info->tokens = tokenize_quotes(cmd);
+	if (!cmd_info->tokens)
+		return (handle_token_error(cmd_info, shell, 0, NULL));
+	process_command_tokens(cmd_info);
+	cmd_info->tokens = split_joined_redirections(cmd_info->tokens);
+	if (cmd_info->tokens[1] == NULL && \
+		is_invalid_single_token(cmd_info->tokens[0]))
+<<<<<<< HEAD
+		return (handle_token_error(cmd_info, shell, 2, NULL));
+	ret = check_syntax(cmd_info->tokens, &bad_token); // pass bad_token
+=======
+		return (handle_token_error(cmd_info, shell, \
+				2, NULL));
+	ret = check_syntax(cmd_info->tokens, &bad_token);
+>>>>>>> main
+	cmd_info = handle_syntax_errors(cmd_info, shell, ret, bad_token);
+	if (!cmd_info)
+		return (NULL);
+	process_tokens(cmd_info, env_mini, shell);
+	return (cmd_info);
+}
