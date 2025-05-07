@@ -3,19 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
+#    By: diramire <diramire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 11:45:57 by diana             #+#    #+#              #
-#    Updated: 2025/05/06 18:47:56 by diana            ###   ########.fr        #
+#    Updated: 2025/05/07 10:17:21 by diramire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = minishell
-CC              = gcc
+CC              = cc
 CFLAGS          = -Wall -Wextra -Werror
 RD				= -lreadline -lhistory
-LDFLAGS			= -L/opt/homebrew/opt/readline/lib
-CPPFLAGS		= -I/opt/homebrew/opt/readline/include
 RM              = rm -rf
 
 SRCS            = main.c \
@@ -86,12 +84,12 @@ LIBFT_PATH      = ./libft
 LIBFT           = $(LIBFT_PATH)/libft.a
 
 %.o: %.c
-				$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+				$(CC) $(CFLAGS) -c $< -o $@
 
 all:            $(NAME)
 
 $(NAME):        $(LIBFT) $(OBJS)
-				@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME) $(RD)
+				@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(RD)
 
 $(LIBFT):
 				make -C $(LIBFT_PATH)

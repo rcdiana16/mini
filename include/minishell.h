@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 08:04:37 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 10:15:11 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_env
 {
 	char			*variable;
 	char			*value;
-//	int		mode;
 	struct s_env	*next;
 }	t_env;
 
@@ -109,7 +108,7 @@ typedef struct s_pipe_exec_info
 	t_shell		*shell;
 }	t_pipe_exec_info;
 
-volatile sig_atomic_t	g_heredoc_interrupted;
+extern volatile sig_atomic_t	g_heredoc_interrupted;
 
 //----------------------------builtins---------------------------------
 //----cd_utils.c----

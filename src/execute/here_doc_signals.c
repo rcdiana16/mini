@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_signals.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:30:45 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 08:03:31 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 10:14:13 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-//volatile sig_atomic_t	g_heredoc_interrupted = 0;
+volatile sig_atomic_t	g_heredoc_interrupted = 0;
 
 void	sigint_handler_heredoc(int sig)
 {
