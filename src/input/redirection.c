@@ -6,7 +6,7 @@
 /*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:41:38 by diana             #+#    #+#             */
-/*   Updated: 2025/03/27 14:48:02 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 16:01:51 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	count_output_redirections(char *cmd, t_command *cmd_info, int *i)
 		else
 			cmd_info->c_red_o++;
 	}
-	else if (cmd[*i] == '|' && ft_strlen(cmd) == 1)
+	else if (cmd[*i] == '|')
 		cmd_info->c_pipe++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:55:02 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/04/16 00:56:13 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 14:44:53 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	update_quote_flags(char c, bool *single, bool *double_q)
 static void	add_token(char ***tokens, char *start, int *count)
 {
 	*tokens = realloc(*tokens, sizeof(char *) * (*count + 2));
-	(*tokens)[*count] = strdup(start);
+	(*tokens)[*count] = ft_strdup(start);
 	(*count)++;
 	(*tokens)[*count] = NULL;
 }

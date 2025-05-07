@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:45:08 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/07 11:49:17 by diramire         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:50:45 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

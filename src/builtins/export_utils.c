@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 23:03:53 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/05 14:42:09 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 14:59:11 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*allocate_cleaned_token(char *token)
 {
 	char	*cleaned_token;
 
-	cleaned_token = malloc(strlen(token) + 1);
+	cleaned_token = malloc(ft_strlen(token) + 1);
 	if (!cleaned_token)
 		return (NULL);
 	return (cleaned_token);

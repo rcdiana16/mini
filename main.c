@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:52:16 by diana             #+#    #+#             */
-/*   Updated: 2025/05/05 14:22:35 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 16:40:31 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
 
 int	init_shell(char **env, t_env **env_list, char ***path_splitted, \
-	char ***path_sp_w_slash)
+        char ***path_sp_w_slash)
 {
 	*path_splitted = NULL;
 	*path_sp_w_slash = NULL;
 	*env_list = initialize_environment(env, *env_list);
 	disable_echoctl();
+	using_history();	
 	return (0);
 }
 
-int	handle_user_input(t_command **cmd_info, t_env *env_list, \
-	t_shell *shell, char **path)
+int     handle_user_input(t_command **cmd_info, t_env *env_list, \
+        t_shell *shell, char **path)
 {
 	set_signals();
 	if (isatty(STDIN_FILENO))
@@ -45,7 +46,7 @@ void	initialize_shell(t_env **env_list, char **env, t_shell_data *data)
 {
 	data->shell.exit_code = 0;
 	if (init_shell(env, env_list, &data->path_splitted, \
-		&data->path_sp_w_slash) == 1)
+			&data->path_sp_w_slash) == 1)
 		exit(EXIT_FAILURE);
 }
 
@@ -62,17 +63,17 @@ void	execute_shell_loop(t_env *env_list, char **env)
 		handle_path(&data.path_splitted, &data.path_sp_w_slash, env_list);
 		set_signals();
 		input_status = handle_user_input(&cmd_info, env_list, \
-						&data.shell, data.path_sp_w_slash);
+										&data.shell, data.path_sp_w_slash);
 		if (input_status != 0)
 			data.shell.exit_code = execute_command(cmd_info, \
-						data.path_sp_w_slash, env_list);
+										data.path_sp_w_slash, env_list);
 		handle_cmd_info(cmd_info);
 	}
 }
 
 int	main(int ac, char **av, char **env)
 {
-	t_env	*env_list;
+	t_env   *env_list;
 
 	if (ac == 0)
 		return (1);

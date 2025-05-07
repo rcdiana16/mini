@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:35:47 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 10:24:16 by diramire         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:45:17 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	would_overflow_longlong(char *arg)
 	len = 0;
 	while (arg[i + len])
 		len++;
-	if (len > strlen(max_llong))
+	if (len > ft_strlen(max_llong))
 		return (1);
-	if (len == strlen(max_llong))
+	if (len == ft_strlen(max_llong))
 	{
 		j = 0;
 		while (arg[i + j])

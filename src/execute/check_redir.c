@@ -6,7 +6,7 @@
 /*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:04:23 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/05 16:56:50 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 15:55:57 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	manage_redirection(t_command *cmd_info)
 		dup2(cmd_info->fd_in, STDIN_FILENO);
 		close(cmd_info->fd_in);
 	}
-	else if ((cmd_info->c_red_o == 1 || cmd_info->c_append == 1))
+	if ((cmd_info->c_red_o == 1 || cmd_info->c_append == 1))
 	{
 		if (!cmd_info->file_out || cmd_info->file_out[0] == '\0')
 			return (-1);
@@ -73,7 +73,7 @@ int	manage_redirection(t_command *cmd_info)
 }
 
 void	execute_in_child(t_command *cmd_info, \
-	char **path_sp_w_slash, t_env *env_list)
+		char **path_sp_w_slash, t_env *env_list)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);

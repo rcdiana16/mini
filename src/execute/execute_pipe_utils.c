@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:32:31 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 11:32:02 by diramire         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:51:10 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
