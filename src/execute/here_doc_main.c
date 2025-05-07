@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:36:04 by diana             #+#    #+#             */
-/*   Updated: 2025/05/06 22:24:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 07:56:58 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-extern volatile sig_atomic_t	g_heredoc_interrupted;
-
 int	handle_heredoc_loop(char *delimiter, \
-int pipefd[2], struct sigaction *sa_old)
+	int pipefd[2], struct sigaction *sa_old)
 {
 	char	*line;
 	int		input_fd;

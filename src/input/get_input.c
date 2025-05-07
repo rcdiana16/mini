@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:54:37 by diana             #+#    #+#             */
-/*   Updated: 2025/05/05 15:28:05 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 09:43:16 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ char	*read_command_line(int mode)
 }
 
 void	handle_eof_or_empty(char *line, t_shell *shell, t_env *env_mini, \
-		int mode)
+	int mode)
 {
 	if (!line)
 	{
 		if (mode == 0)
+		{
 			write(1, "exit\n", 5);
+			shell->exit_code = 0;
+		}
 		free_env_list(env_mini);
 		free(line);
 		exit(shell->exit_code);
@@ -41,7 +44,7 @@ void	handle_eof_or_empty(char *line, t_shell *shell, t_env *env_mini, \
 }
 
 t_command	*parse_and_store_command(char *line, t_env *env_mini, \
-			t_shell *shell)
+	t_shell *shell)
 {
 	t_command	*cmd_info;
 
@@ -56,7 +59,7 @@ t_command	*parse_and_store_command(char *line, t_env *env_mini, \
 }
 
 t_command	*get_input(t_env *env_mini, int mode, t_shell *shell, \
-			char **path)
+	char **path)
 {
 	char	*line;
 

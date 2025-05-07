@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/06 22:25:41 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 08:04:37 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct s_pipe_exec_info
 	t_shell		*shell;
 }	t_pipe_exec_info;
 
-//extern volatile sig_atomic_t	g_heredoc_interrupted;
+volatile sig_atomic_t	g_heredoc_interrupted;
 
 //----------------------------builtins---------------------------------
 //----cd_utils.c----

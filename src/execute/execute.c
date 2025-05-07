@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:43:32 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/06 08:18:05 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 09:39:37 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,6 @@ int	prepare_execution(t_command *cmd_info, char **path_sp_w_slash, \
 	return (-1);
 }
 
-/*
-int	execute_command(t_command *cmd_info, char **path_sp_w_slash, \
-	t_env *env_list)
-{
-	int					pid;
-	int					exit_status;
-	int					prepare_status;
-	t_pipe_exec_info	pipe_exec_info;
-
-	pipe_exec_info.prev_pipe_fd = -1;
-	pipe_exec_info.path_sp_w_slash = path_sp_w_slash;
-	pipe_exec_info.env_list = env_list;
-	pipe_exec_info.cmd_info = cmd_info;
-	prepare_status = prepare_execution(cmd_info, path_sp_w_slash, env_list, \
-										&pipe_exec_info);
-	if (prepare_status != -1)
-		return (prepare_status);
-	pid = fork();
-	if (pid == 0)
-		execute_in_child(cmd_info, path_sp_w_slash, env_list);
-	else
-	{
-		signal(SIGINT, SIG_IGN);
-		signal(SIGQUIT, SIG_IGN);
-		waitpid(pid, &exit_status, 0);
-		set_signals();
-		restore_heredoc_stdin(cmd_info);
-		if (WIFEXITED(exit_status))
-			return (WEXITSTATUS(exit_status));
-	}
-	return (0);
-}
-*/
-
 static void	init_pipe_exec_info(t_pipe_exec_info *info, \
 	t_command *cmd_info, char **path_sp_w_slash, t_env *env_list)
 {
@@ -98,6 +64,7 @@ static void	init_pipe_exec_info(t_pipe_exec_info *info, \
 	info->path_sp_w_slash = path_sp_w_slash;
 	info->env_list = env_list;
 	info->cmd_info = cmd_info;
+	info->shell = NULL;
 }
 
 static int	handle_parent_process(int pid, t_command *cmd_info)
@@ -111,6 +78,13 @@ static int	handle_parent_process(int pid, t_command *cmd_info)
 	restore_heredoc_stdin(cmd_info);
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGINT)
+			return (130);
+		else if (WTERMSIG(status) == SIGQUIT)
+			return (131);
+	}
 	return (0);
 }
 

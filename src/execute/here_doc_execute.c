@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_execute.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:39:32 by diana             #+#    #+#             */
-/*   Updated: 2025/05/06 19:43:31 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 09:47:34 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
+/*
 int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
 {
 	int	heredoc_fd;
@@ -19,7 +19,38 @@ int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
 
 	heredoc_fd = handle_heredoc_input(delimiter);
 	if (heredoc_fd == -1)
+	{
+		if (g_heredoc_interrupted)
+		{
+			if (pipe_exec_info->shell)
+				pipe_exec_info->shell->exit_code = 130;
+			pipe_exec_info->cmd_info->exit_code = 130;
+			g_heredoc_interrupted = 0;
+		}
 		return (-1);
+	}
+	saved_stdin = dup(STDIN_FILENO);
+	if (saved_stdin == -1)
+	{
+		close(heredoc_fd);
+		return (-1);
+	}
+	if (dup2(heredoc_fd, STDIN_FILENO) == -1)
+	{
+		close(heredoc_fd);
+		close(saved_stdin);
+		return (-1);
+	}
+	pipe_exec_info->cmd_info->fd_here_doc = saved_stdin;
+	pipe_exec_info->cmd_info->here_doc = 1;
+	pipe_exec_info->cmd_info->fd_in = heredoc_fd;
+	return (0);
+}*/
+
+int	handle_heredoc_result(int heredoc_fd, t_pipe_exec_info *pipe_exec_info)
+{
+	int	saved_stdin;
+
 	saved_stdin = dup(STDIN_FILENO);
 	if (saved_stdin == -1)
 	{
@@ -38,9 +69,28 @@ int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
 	return (0);
 }
 
+int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
+{
+	int	heredoc_fd;
+
+	heredoc_fd = handle_heredoc_input(delimiter);
+	if (heredoc_fd == -1)
+	{
+		if (g_heredoc_interrupted)
+		{
+			if (pipe_exec_info->shell)
+				pipe_exec_info->shell->exit_code = 130;
+			pipe_exec_info->cmd_info->exit_code = 130;
+			g_heredoc_interrupted = 0;
+		}
+		return (-1);
+	}
+	return (handle_heredoc_result(heredoc_fd, pipe_exec_info));
+}
+
 void	restore_heredoc_stdin(t_command *cmd_info)
 {
-	if (cmd_info->here_doc /*&& cmd_info->c_pipe == 0*/)
+	if (cmd_info->here_doc)
 	{
 		if (dup2(cmd_info->fd_here_doc, STDIN_FILENO) == -1)
 		{
@@ -55,7 +105,7 @@ void	restore_heredoc_stdin(t_command *cmd_info)
 }
 
 void	handle_heredoc_redirection(char **cmd_tokens, int *i, \
-		t_pipe_exec_info *pipe_exec_info)
+	t_pipe_exec_info *pipe_exec_info)
 {
 	if (cmd_tokens[*i + 1])
 	{
