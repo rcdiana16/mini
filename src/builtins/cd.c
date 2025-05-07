@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:36:55 by diana             #+#    #+#             */
-/*   Updated: 2025/04/28 11:15:05 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 10:23:56 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,6 @@ int	handle_cd_arguments(char **cmd, t_command *cmd_info)
 	}
 	return (0);
 }
-/*
-int	is_valid_path(char *path, t_env *env_mini, t_command *cmd_info, char **cmd)
-{
-	char	*oldpwd;
-
-	if (!path)
-	{
-		path = get_env_value(env_mini, "HOME");
-		if (!path)
-			return (0);
-	}
-	if (handle_cd_arguments(cmd, cmd_info) != 0)
-		return (1);
-	if (cmd[1] && ft_strncmp(cmd[1], "-", 2) == 0)
-	{
-		path = get_env_value(env_mini, "OLDPWD");
-		if (!path)
-		{
-			write(2, "minishell: cd: OLDPWD not set\n", 30);
-			cmd_info->exit_code = 1;
-			return (1);
-		}
-		write(1, path, ft_strlen(path));
-		write(1, "\n", 1);
-	}
-	if (chdir(path) == 0)
-	{
-		oldpwd = get_env_value(env_mini, "PWD");
-		update_pwd_env(env_mini, oldpwd, path);
-		return (0);
-	}
-	cmd_info->exit_code = 1;
-	return (print_cd_error(path));
-}
-
-*/
 
 static int	check_home(t_env *env_mini, char **path)
 {

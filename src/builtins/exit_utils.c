@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:35:47 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 07:37:06 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 10:24:16 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,6 @@ void	handle_exit_argument_error(t_command *cmd_info)
 	ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 	cmd_info->exit_code = 1;
 }
-/*
-int	would_overflow_longlong(char *arg)
-{
-	int		i;
-	int		j;
-	size_t	len;
-	char	*max_llong;
-
-	i = 0;
-	if (arg[0] == '-')
-		max_llong = "9223372036854775808";
-	else if (arg[0] == '+')
-		max_llong = "9223372036854775807";
-	else
-		max_llong = "9223372036854775807";
-	if (arg[0] == '-' || arg[0] == '+')
-		while (arg[i] == '0')
-			i++;
-	len = 0;
-	while (arg[i + len])
-		len++;
-	if (len > ft_strlen(max_llong))
-		return (1);
-	if (len == ft_strlen(max_llong))
-	{
-		j = 0;
-		while (arg[i + j])
-		{
-			if (arg[i + j] > max_llong[j])
-				return (1);
-			else if (arg[i + j] < max_llong[j])
-				return (0);
-			j++;
-		}
-	}
-	return (0);
-}*/
 
 const char	*get_llong_limit_and_skip_zeros(char *arg, int *start_index)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:21:28 by cosmos            #+#    #+#             */
-/*   Updated: 2025/04/27 22:30:47 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:35:17 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ char	*make_good_cmd(char *cmd)
 	}
 	return (tmp);
 }
-/*
-char	*make_good_cmd(char *cmd)
-{
-	size_t new_len;
-	char *tmp;
-
-	// Safely shrink the string in-place
-	remove_single_quotes(cmd);
-
-	new_len = ft_strlen(cmd) + 1;
-	tmp = realloc(cmd, new_len); // shrink buffer *after* shortening
-	if (!tmp)
-	{
-		perror("realloc failed");
-		return cmd; // still valid, since realloc failed
-	}
-	return tmp;
-}
-*/
 
 char	*make_good_cmd2(char *cmd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:18:11 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/05 16:38:43 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 10:23:19 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,41 +101,6 @@ static char	*trim_buffer(char *buffer)
 	free(buffer);
 	return (new_buffer);
 }
-/*
-char	*get_next_line(int fd)
-{
-	static char	*buffer = NULL;
-	char		*line;
-	ssize_t		bytes_read;
-
-	if (fd == -42)
-	{
-		if (buffer)
-		{
-			free(buffer);
-			buffer = NULL;
-		}
-		return (NULL);
-	}
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	bytes_read = read_into_buffer(fd, &buffer);
-	if (bytes_read < 0 || (!bytes_read && (!buffer || !buffer[0])))
-	{
-		if (buffer)
-		{
-			free(buffer);
-			buffer = NULL;
-		}
-		return (NULL);
-	}
-	line = get_line_in_buffer(buffer);
-	buffer = trim_buffer(buffer);
-	if (!buffer)
-		free(buffer);
-	return (line);
-}
-*/
 
 char	*get_next_line(int fd)
 {

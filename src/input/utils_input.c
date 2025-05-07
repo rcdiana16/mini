@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 11:12:36 by cosmos            #+#    #+#             */
-/*   Updated: 2025/04/28 11:11:35 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 11:36:01 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,6 @@ static int	check_ambiguous_redirect(t_command *cmd_info, char *token)
 	}
 	return (0);
 }
-/*
-static void	replace_or_remove_token(t_command *cmd_info, int i, char *tmp)
-{
-	int	j;
-
-	if (!tmp)
-	{
-		free(cmd_info->tokens[i]);
-		cmd_info->tokens[i] = ft_strdup("");
-		if (!cmd_info->tokens[i])
-		{
-			return ;
-		}
-	}
-	else if (tmp && tmp[0] != '\0')
-	{
-		free(cmd_info->tokens[i]);
-		cmd_info->tokens[i] = tmp;
-	}
-	else
-	{
-		free(cmd_info->tokens[i]);
-		free(tmp);
-		j = i;
-		while (cmd_info->tokens[j])
-		{
-			cmd_info->tokens[j] = cmd_info->tokens[j + 1];
-			j++;
-		}
-		cmd_info->tokens[j] = NULL;
-	}
-}*/
 
 static void	replace_or_remove_token(t_command *cmd_info, int i, char *tmp)
 {

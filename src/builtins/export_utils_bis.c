@@ -3,55 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils_bis.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:13:48 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/05 17:35:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 10:24:33 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*
-char	**get_tokens(char *cmd)
-{
-	char	**tokens;
-	int		equal_count = 0;
-	char	*ptr = cmd;
-	char	*first_equal;
-
-	while (*ptr)
-	{
-		if (*ptr == '=')
-			equal_count++;
-		ptr++;
-	}
-	if (equal_count == 1)
-	{
-		tokens = ft_split(cmd, '=');
-	}
-	else if (equal_count > 1)
-	{
-		first_equal = strchr(cmd, '=');
-		*first_equal = '\0';
-		tokens = ft_split(cmd, ' ');
-		char	*rest = first_equal + 1;
-		char	**rest_tokens = ft_split(rest, ' ');
-		int i = 0, j = 0;
-		while (tokens[i]) i++;
-		while (rest_tokens[j])
-		{
-			tokens[i] = rest_tokens[j];
-			i++;
-			j++;
-		}
-		tokens[i] = NULL;
-		free(rest_tokens);
-	}
-	else
-		tokens = ft_split(cmd, ' ');
-	return (tokens);
-}
-*/
 
 static int	count_equals(char *cmd)
 {

@@ -3,49 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_execute.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:39:32 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 09:47:34 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 11:32:59 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*
-int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
-{
-	int	heredoc_fd;
-	int	saved_stdin;
-
-	heredoc_fd = handle_heredoc_input(delimiter);
-	if (heredoc_fd == -1)
-	{
-		if (g_heredoc_interrupted)
-		{
-			if (pipe_exec_info->shell)
-				pipe_exec_info->shell->exit_code = 130;
-			pipe_exec_info->cmd_info->exit_code = 130;
-			g_heredoc_interrupted = 0;
-		}
-		return (-1);
-	}
-	saved_stdin = dup(STDIN_FILENO);
-	if (saved_stdin == -1)
-	{
-		close(heredoc_fd);
-		return (-1);
-	}
-	if (dup2(heredoc_fd, STDIN_FILENO) == -1)
-	{
-		close(heredoc_fd);
-		close(saved_stdin);
-		return (-1);
-	}
-	pipe_exec_info->cmd_info->fd_here_doc = saved_stdin;
-	pipe_exec_info->cmd_info->here_doc = 1;
-	pipe_exec_info->cmd_info->fd_in = heredoc_fd;
-	return (0);
-}*/
 
 int	handle_heredoc_result(int heredoc_fd, t_pipe_exec_info *pipe_exec_info)
 {
@@ -73,7 +38,7 @@ int	execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info)
 {
 	int	heredoc_fd;
 
-	heredoc_fd = handle_heredoc_input(delimiter);
+	heredoc_fd = handle_heredoc_input(delimiter, pipe_exec_info);
 	if (heredoc_fd == -1)
 	{
 		if (g_heredoc_interrupted)

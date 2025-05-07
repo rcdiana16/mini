@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rep_env_var.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 15:14:46 by cosmos            #+#    #+#             */
-/*   Updated: 2025/04/27 22:12:34 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:35:45 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-/*
-char	*extract_var_name(t_cmd_state *state)
-{
-	int		k;
-	int		j;
-	char	*var_name;
-
-	k = 0;
-	j = 0;
-	while (state->cmd[state->i] && (ft_isalnum(state->cmd[state->i]) \
-	|| state->cmd[state->i] == '_'))
-	{
-		k++;
-		(state->i)++;
-	}
-	if (k == 0)
-	{
-		return (NULL);
-	}
-	var_name = malloc(sizeof(char) * (k + 1));
-	if (!var_name)
-		return (NULL);
-	while (j < k)
-	{
-		var_name[j] = state->cmd[state->i - k + j];
-		j++;
-	}
-	var_name[k] = '\0';
-	return (var_name);
-}*/
 
 static int	get_var_name_length(t_cmd_state *state)
 {

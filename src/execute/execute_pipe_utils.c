@@ -3,48 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:32:31 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/06 19:22:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:32:02 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*
-int	handle_redirection_and_builtins(t_pipe_exec_info *pipe_exec_info)
-{
-	int	exit_builtin;
-
-	if (pipe_exec_info->cmd_info->file_out || pipe_exec_info->cmd_info->file_in)
-	{
-		if (!manage_redirection(pipe_exec_info->cmd_info))
-		{
-			free_arr(pipe_exec_info->current_command);
-			free_all(pipe_exec_info->cmd_info, pipe_exec_info->path_sp_w_slash, \
-			pipe_exec_info->env_list);
-			close(0);
-			close(1);
-			get_next_line(-42);
-			return (1);
-		}
-	}
-	exit_builtin = check_builtins(pipe_exec_info->current_command, \
-					pipe_exec_info->env_list, \
-					pipe_exec_info->cmd_info, \
-					pipe_exec_info->path_sp_w_slash);
-	if (exit_builtin != -1)
-	{
-		close(0);
-		close(1);
-		free_all(pipe_exec_info->cmd_info, pipe_exec_info->path_sp_w_slash, \
-			pipe_exec_info->env_list);
-		free_arr(pipe_exec_info->current_command);
-		get_next_line(-42);
-		return (exit_builtin);
-	}
-	return (-1);
-}*/
 
 int	child_process_execute_command(t_pipe_exec_info *pipe_exec_info)
 {

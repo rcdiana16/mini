@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:45:08 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/05 16:20:04 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:49:17 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	execute_builtin(t_command *cmd_info, t_env *env_list, \
 	exit_builtin = check_builtins(cmd_info->tokens, env_list, \
 		cmd_info, path_sp_w_slash);
 	if (exit_builtin != -1)
+	{
+		restore_heredoc_stdin(cmd_info);
 		return (exit_builtin);
+	}
 	return (-1);
 }
 

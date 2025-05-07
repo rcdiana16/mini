@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:59:48 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/06 19:16:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:32:21 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,6 @@ int	execute_child_process_pipe(char **cmd_info, char **path_sp_w_slash, \
 	path_sp_w_slash);
 	return (0);
 }
-
-/*
-int	filter_and_copy_tokens(char **cmd_tokens, t_command *cmd_info, \
-		char **cleaned_cmd, t_pipe_exec_info *pipe_exec_info)
-{
-	int	i;
-	int	j;
-	int	ret;
-
-	i = 0;
-	j = 0;
-	if (!cmd_tokens)
-		return (0);
-	while (cmd_tokens[i])
-	{
-		if ((ft_strncmp(cmd_tokens[i], ">", 1) == 0 || \
-		ft_strncmp(cmd_tokens[i], ">>", 2) == 0 || \
-		ft_strncmp(cmd_tokens[i], "<", 1) == 0 || \
-		ft_strncmp(cmd_tokens[i], "<<", 2) == 0) && (cmd_tokens[i + 1]))
-		{
-			ret = handle_redirection(cmd_tokens, cmd_info, &i, pipe_exec_info);
-			if (ret == -1)
-				return (-1);
-		}
-		else
-		{
-			if (cmd_tokens[i])
-				cleaned_cmd[j++] = ft_strdup(cmd_tokens[i]);
-			i++;
-		}
-	}
-	cleaned_cmd[j] = NULL;
-	return (0);
-}*/
 
 static int	handle_redirection_tokens(char **cmd_tokens, \
 	t_command *cmd_info, int *i, t_pipe_exec_info *pipe_exec_info)

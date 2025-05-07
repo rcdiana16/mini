@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 15:43:40 by diana             #+#    #+#             */
-/*   Updated: 2025/05/05 14:25:18 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 10:24:55 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,6 @@ void	add_new_variable(t_env *env_mini, char **tokens, t_env *new_var)
 		env_mini = env_mini->next;
 	env_mini->next = new_var;
 }
-/*
-static int	is_invalid_identifier(char **tokens)
-{
-	if (!tokens || !tokens[0] || !is_valid_variable_name(tokens[0]))
-	{
-		write(2, "export: ", 8);
-		if (tokens && tokens[0])
-			write(2, tokens[0], ft_strlen(tokens[0]));
-		write(2, ": not a valid identifier\n", 25);
-		free_arr(tokens);
-		return (1);
-	}
-	if (!tokens[1])
-	{
-		//free_arr(tokens);
-		return (0);
-	}
-	return (0);
-}*/
 
 static int	is_invalid_identifier(char *tokens)
 {

@@ -6,7 +6,7 @@
 /*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 10:15:11 by diramire         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:49:59 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ void		ft_unset(t_env *env_mini, char **cmd);
 int			check_standard_builtins(char **command, t_env *env_mini, \
 			t_command **cmd_info, char **path);
 int			check_env_builtins(char **command, t_env *env_mini);
-//void		add_new_variable(t_env *env_mini, char **tokens, t_env *new_var);
 //----check_builtins_utils.c----
 int			check_builtins(char **cmd, t_env *env_mini, t_command *cmd_info, \
 			char **path);
@@ -191,7 +190,6 @@ char		**convert_env_to_array(t_env *env_mini);
 //----here_doc_utils.c----
 int			process_heredoc_line(char *line, char *delimiter, int *pipefd);
 int			init_heredoc_io(void);
-//int			get_next_line_pip(char **output_line);
 //----here_doc_signals.c----
 void		sigint_handler_heredoc(int sig);
 int			check_heredoc_interrupt(char *line, int *pipefd, \
@@ -199,9 +197,8 @@ int			check_heredoc_interrupt(char *line, int *pipefd, \
 void		init_here_doc_signals(struct sigaction *sa_new, \
 			struct sigaction *sa_old);
 //----here_doc_main.c----
-int			handle_heredoc_loop(char *delimiter, \
-			int pipefd[2], struct sigaction *sa_old);
-int			handle_heredoc_input(char *delimiter);
+int			handle_heredoc_input(char *delimiter, \
+	t_pipe_exec_info *pipe_exec_info);
 //----here_doc_execute.c----
 int			execute_heredoc(char *delimiter, t_pipe_exec_info *pipe_exec_info);
 void		restore_heredoc_stdin(t_command *cmd_info);
@@ -219,7 +216,6 @@ int			execute_child_process_pipe(char **cmd_info, char **path_sp_w_slash, \
 int			execute_pipes(t_command *cmd_info, \
 			char **path_sp_w_slash, t_env *env_list);
 int			child_process_execute_command(t_pipe_exec_info *pipe_exec_info);
-//void		child_process_handle_redirection(t_pipe_exec_info pipe_exec_info);
 //----execute_pipe_utils_bis.c----
 char		*find_builtin_or_exit_pipe(char **path_sp_w_slash, char **cmd_inf, \
 			t_env *env_list, t_command *stru);
@@ -241,7 +237,6 @@ int			manage_redirection(t_command *cmd_info);
 void		execute_in_child(t_command *cmd_info, char **path_sp_w_slash, \
 			t_env *env_list);
 void		close_fd(t_command *cmd_info);
-
 //----------------------------free----------------------------
 //----free.c---
 void		free_command(t_command *cmd_info);
@@ -329,7 +324,7 @@ void		remove_single_quotes(char *token);
 //----redirection.c----
 void		count_redirections(char *cmd, t_command *cmdf_info);
 //----------------------------path----------------------------
-//----path.c---
+//----path.c----
 void		handle_path(char ***path_splitted, char ***path_sp_w_slash, \
 			t_env *env_mini);
 //---path_utils.c----

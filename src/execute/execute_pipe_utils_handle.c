@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe_utils_handle.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:18:11 by diana             #+#    #+#             */
-/*   Updated: 2025/05/05 22:18:31 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/07 11:14:53 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	handle_builtin(t_pipe_exec_info *pipe_exec_info)
 		pipe_exec_info->path_sp_w_slash);
 	if (exit_builtin != -1)
 	{
+		restore_heredoc_stdin(pipe_exec_info->cmd_info);
 		close(0);
 		close(1);
 		free_all(pipe_exec_info->cmd_info, pipe_exec_info->path_sp_w_slash, \
