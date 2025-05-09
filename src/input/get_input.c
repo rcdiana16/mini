@@ -3,25 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:54:37 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 16:38:10 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 17:56:48 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*read_command_line(int mode)
-{
-	if (mode == 0)
-		return (readline("\033[1;32mCBS$ \033[0m"));
-	else
-		return (get_next_line(0));
-}
-
 void	handle_eof_or_empty(char *line, t_shell *shell, t_env *env_mini, \
-        int mode)
+		int mode)
 {
 	if (!line)
 	{
@@ -57,21 +49,22 @@ int	is_only_whitespace(const char *str)
 
 void	manage_history(char *line)
 {
-    HIST_ENTRY	*last_entry;
+	HIST_ENTRY	*last_entry;
 
 	if (!line || *line == '\0' || is_only_whitespace(line))
 		return ;
 	if (history_length > 0)
 	{
 		last_entry = history_get(history_length - 1);
-		if (last_entry && ft_strncmp(last_entry->line, line, ft_strlen(line) + 1) == 0)
-				return ;
+		if (last_entry && ft_strncmp(last_entry->line, line, \
+		ft_strlen(line) + 1) == 0)
+			return ;
 	}
 	add_history(line);
 }
 
 t_command	*parse_and_store_command(char *line, t_env *env_mini, \
-        t_shell *shell)
+			t_shell *shell)
 {
 	t_command	*cmd_info;
 
@@ -86,7 +79,7 @@ t_command	*parse_and_store_command(char *line, t_env *env_mini, \
 }
 
 t_command	*get_input(t_env *env_mini, int mode, t_shell *shell, \
-        char **path)
+			char **path)
 {
 	char	*line;
 
@@ -94,7 +87,7 @@ t_command	*get_input(t_env *env_mini, int mode, t_shell *shell, \
 	if (!line || *line == '\0' || ft_strncmp(line, "\"\"", 2) == 0)
 	{
 		if (!line && path)
-				free_arr(path);
+			free_arr(path);
 		handle_eof_or_empty(line, shell, env_mini, mode);
 		return (NULL);
 	}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   verify_and_split_cmd_split.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:21:56 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 16:35:55 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 19:22:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void    copy_normal_token(char **tokens, char **new_tokens, int *i, int *j)
+void	copy_normal_token(char **tokens, char **new_tokens, int *i, int *j)
 {
 	new_tokens[(*j)++] = ft_strdup(tokens[*i]);
 }
@@ -92,7 +92,8 @@ static int	count_tokens_after_split(char *token)
 	return (count);
 }
 
-static void	split_token_at_operator(char *token, char ***result, int *result_index)
+static void	split_token_at_operator(char *token, char ***result, \
+			int *result_index)
 {
 	int		i;
 	int		start;
@@ -180,7 +181,7 @@ char	**split_tokens_with_operators(char **tokens)
 	return (result);
 }
 
-char    **split_joined_redirections(char **tokens)
+char	**split_joined_redirections(char **tokens)
 {
 	int		i;
 	int		j;

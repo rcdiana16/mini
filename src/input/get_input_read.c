@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   get_input_read.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 11:20:16 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 17:13:19 by diana            ###   ########.fr       */
+/*   Created: 2025/05/07 17:54:32 by diana             #+#    #+#             */
+/*   Updated: 2025/05/07 17:56:41 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	ft_our_env(t_env *env_mini, char **cmd)
+char	*read_command_line(int mode)
 {
-	if (cmd[1])
-	{
-		write(2, "env: '", ft_strlen("env: '"));
-		write(2, cmd[1], ft_strlen(cmd[1]));
-		write(2, "': No such file or directory\n", \
-		ft_strlen("': No such file or directory\n"));
-		return (127);
-	}
-	if (!env_mini)
-		return (0);
-	while (env_mini)
-	{
-		ft_printf("%s=%s\n", env_mini->variable, env_mini->value);
-		env_mini = env_mini->next;
-	}
-	return (0);
+	if (mode == 0)
+		return (readline("\033[1;32mCBS$ \033[0m"));
+	else
+		return (get_next_line(0));
 }

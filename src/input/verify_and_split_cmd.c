@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_and_split_cmd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 23:00:02 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 16:34:58 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/07 17:29:25 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	split_double_redirection(char **tokens, \
 	}
 }
 
-void    split_single_redirection(char **tokens, \
-                        char **new_tokens, int *i, int *j)
+void	split_single_redirection(char **tokens, \
+		char **new_tokens, int *i, int *j)
 {
 	char	*redir;
 	char	*rest;

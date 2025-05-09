@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+         #
+#    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 11:45:57 by diana             #+#    #+#              #
-#    Updated: 2025/05/07 14:47:22 by maximemarti      ###   ########.fr        #
+#    Updated: 2025/05/09 18:35:01 by diana            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS            = main.c \
 					src/path/path.c \
 					src/path/path_utils.c \
 					src/input/get_input.c \
+					src/input/get_input_read.c \
 					src/input/get_input_utils.c \
 					src/input/utils_input.c \
 					src/input/utils_input_2.c \

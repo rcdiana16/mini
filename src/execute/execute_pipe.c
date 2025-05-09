@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:59:48 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 11:32:21 by diramire         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:25:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	handle_redirection_tokens(char **cmd_tokens, \
 	return (0);
 }
 
-static void	copy_normal_token(char **cmd_tokens, \
+static void	copy_normal_token_pipe(char **cmd_tokens, \
 char **cleaned_cmd, int *j, int i)
 {
 	if (cmd_tokens[i])
@@ -83,7 +83,7 @@ int	filter_and_copy_tokens(char **cmd_tokens, t_command *cmd_info, \
 			return (-1);
 		if (cmd_tokens[i])
 		{
-			copy_normal_token(cmd_tokens, cleaned_cmd, &j, i);
+			copy_normal_token_pipe(cmd_tokens, cleaned_cmd, &j, i);
 			i++;
 		}
 	}
