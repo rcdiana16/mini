@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 17:38:03 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 17:07:52 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:28:33 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int	check_env_builtins(char **command, t_env *env_mini)
 		if (command[1] == NULL)
 		{
 			if (env_mini)
-				return (ft_our_env(env_mini, command));
-			return (0);
+				return (print_sorted_env(env_mini));
 		}
 		else
 		{

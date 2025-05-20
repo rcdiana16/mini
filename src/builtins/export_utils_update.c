@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils_update.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:13:01 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 17:12:05 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:46:40 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,39 @@ int	update_existing_variable(t_env *env_mini, char **tokens)
 		env_mini = env_mini->next;
 	}
 	return (0);
+}
+
+int	alloc_and_init_new_var(t_env *env_mini, char **tokens)
+{
+	t_env	*new_var;
+
+	new_var = malloc(sizeof(t_env));
+	if (!new_var)
+		return (1);
+	init_new_variable(new_var, tokens);
+	if (env_mini)
+		add_new_variable(env_mini, tokens, new_var);
+	else
+	{
+		free(new_var->variable);
+		free(new_var->value);
+		free(new_var);
+		return (1);
+	}
+	return (0);
+}
+
+int	handle_export_arg(t_env *env_mini, char *arg)
+{
+	char	**tokens;
+	int		err;
+
+	if (is_invalid_identifier(arg))
+		return (1);
+	tokens = get_tokens(arg);
+	err = 0;
+	if (!env_mini || !update_existing_variable(env_mini, tokens))
+		err = alloc_and_init_new_var(env_mini, tokens);
+	free_arr(tokens);
+	return (err);
 }

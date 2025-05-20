@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 15:43:40 by diana             #+#    #+#             */
-/*   Updated: 2025/05/07 17:19:03 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:40:26 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	add_new_variable(t_env *env_mini, char **tokens, t_env *new_var)
 	env_mini->next = new_var;
 }
 
-static int	is_invalid_identifier(char *tokens)
+int	is_invalid_identifier(char *tokens)
 {
 	if (!tokens || !*tokens || !is_valid_variable_name(tokens))
 	{
@@ -65,38 +65,15 @@ static int	is_invalid_identifier(char *tokens)
 
 int	ft_export(t_env *env_mini, char **cmd)
 {
-	char	**tokens;
-	int		i;
-	t_env	*new_var;
+	int	i;
 
-	i = 1;
 	if (!cmd || !cmd[1])
 		return (1);
+	i = 1;
 	while (cmd[i])
 	{
-		if (is_invalid_identifier(cmd[i]))
+		if (handle_export_arg(env_mini, cmd[i]) == 1)
 			return (1);
-		tokens = get_tokens(cmd[i]);
-		if (!env_mini || !update_existing_variable(env_mini, tokens))
-		{
-			new_var = malloc(sizeof(t_env));
-			if (!new_var)
-				return (1);
-			init_new_variable(new_var, tokens);
-			if (env_mini)
-			{
-				add_new_variable(env_mini, tokens, new_var);
-			}
-			else
-			{
-				free(new_var->variable);
-				free(new_var->value);
-				free(new_var);
-				free_arr(tokens);
-				return (1);
-			}
-		}
-		free_arr(tokens);
 		i++;
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:08:20 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/07 17:25:49 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:33:30 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,30 @@ void	append_node(t_env **head, char *var, char *val)
 	temp->next = new_node;
 }
 
+static void	init_default_env(t_env **env_list)
+{
+	char	cwd[PATH_MAX];
+	char	*ret;
+
+	ret = getcwd(cwd, sizeof(cwd));
+	if (ret != NULL)
+		append_node(env_list, "PWD", cwd);
+	append_node(env_list, "SHLVL", "1");
+	append_node(env_list, "_", "./minishell");
+}
+
 t_env	*get_list_env(char **envp, t_env *env_list)
 {
 	int		i;
 	char	*equal_sign;
 
 	env_list = NULL;
-	i = 0;
 	if (!envp || !envp[0])
 	{
-		char	cwd[PATH_MAX];
-		if (getcwd(cwd, sizeof(cwd)) != NULL)
-			append_node(&env_list, "PWD", cwd);
-		append_node(&env_list, "SHLVL", "1");
-		append_node(&env_list, "_", "./minishell");
+		init_default_env(&env_list);
 		return (env_list);
 	}
+	i = 0;
 	while (envp[i])
 	{
 		equal_sign = ft_strchr(envp[i], '=');

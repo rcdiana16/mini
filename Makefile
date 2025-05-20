@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
+#    By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 11:45:57 by diana             #+#    #+#              #
-#    Updated: 2025/05/09 18:35:01 by diana            ###   ########.fr        #
+#    Updated: 2025/05/20 18:32:46 by maximemarti      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRCS            = main.c \
 					src/input/verify_and_split_cmd_utils.c \
 					src/input/verify_and_split_cmd_utils_bis.c \
 					src/input/verify_and_split_cmd_split.c \
+					src/input/split_cmd.c \
+					src/input/split_at_op.c \
 					src/input/check_syntax.c \
 					src/input/check_syntax_utils.c \
 					src/input/count_sp_ch.c \
@@ -75,6 +77,7 @@ SRCS            = main.c \
 					src/builtins/export_utils_bis.c \
 					src/builtins/export_utils_bis_2.c \
 					src/builtins/export_utils_update.c \
+					src/builtins/print_sorted_env.c \
 					src/builtins/unset.c \
 					src/signals/ctrl_c.c \
 					src/signals/ctrl_nothing.c \

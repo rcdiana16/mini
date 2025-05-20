@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/09 18:35:14 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 18:34:49 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,19 @@ typedef struct s_pipe_exec_info
 	t_shell		*shell;
 }	t_pipe_exec_info;
 
+typedef struct s_split_res
+{
+	char	***result;
+	int		*res_i;
+}	t_split_res;
+
+typedef struct s_split_ctx
+{
+	char	**result;
+	int		index;
+}	t_split_ctx;
+
+
 extern volatile sig_atomic_t	g_heredoc_interrupted;
 
 //----------------------------builtins---------------------------------
@@ -139,7 +152,8 @@ int			validate_exit_argument(char *arg);
 int			ft_export(t_env *env_mini, char **cmd);
 void		join_quoted_values(char **cmd, char **value);
 void		assign_value(char **cmd, char **value);
-
+int			is_invalid_identifier(char *tokens);
+void		add_new_variable(t_env *env_mini, char **tokens, t_env *new_var);
 //----export_utils.c----
 void		init_new_variable(t_env *new_var, char **tokens);
 int			is_valid_variable_name(char *name);
@@ -147,12 +161,16 @@ int			is_valid_variable_name(char *name);
 //----export_utils_update.c----
 int			handle_existing_variable(t_env *env_mini, char **cmd);
 int			update_existing_variable(t_env *env_mini, char **cmd);
-
+int			handle_export_arg(t_env *env_mini, char *arg);
+int			alloc_and_init_new_var(t_env *env_mini, char **tokens);
 //----export_utils_bis.c----
 char		**get_tokens(char *cmd);
 
 //----export_utils_bis.c----
 void		join_cmd_values(char **cmd, char **value);
+void		print_and_free_list(char **list);
+//----print_sorted_env.c----
+int			print_sorted_env(t_env *env);
 
 //----pwd.c----
 void		ft_our_pwd(t_env *env_mini);
@@ -336,6 +354,11 @@ char		**allocate_new_tokens(char **tokens);
 char		**split_joined_redirections(char **tokens);
 char		**split_tokens_with_operators(char **tokens);
 void		copy_normal_token(char **tokens, char **new_tokens, int *i, int *j);
+int			should_split_at(char *token, int i);
+int			is_operator_char(char c);
+//-----new----
+void		split_token_at_operator(char *token, char ***result, int *res_i);
+//---new2----
 
 //---check_syntax.c----
 int			check_syntax(char **cmd, char **bad_tokens);
