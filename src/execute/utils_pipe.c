@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:52:12 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/04/16 00:35:53 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/20 21:24:02 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,33 @@ int	create_pipe(int *pipe_fd)
 
 void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
 {
-	if (pipe_exec_info->prev_pipe_fd != -1)
+	if (pipe_exec_info->cmd_info->file_in)
+	{
+		dup2(pipe_exec_info->cmd_info->fd_in, STDIN_FILENO);
+		close(pipe_exec_info->cmd_info->fd_in);
+	}
+	else if (pipe_exec_info->prev_pipe_fd != -1)
 	{
 		dup2(pipe_exec_info->prev_pipe_fd, STDIN_FILENO);
 		close(pipe_exec_info->prev_pipe_fd);
 	}
-	if (pipe_exec_info->i < pipe_exec_info->cmd_info->c_pipe)
+
+	if (pipe_exec_info->cmd_info->file_out)
+	{
+		dup2(pipe_exec_info->cmd_info->fd_out, STDOUT_FILENO);
+		close(pipe_exec_info->cmd_info->fd_out);
+	}
+	else if (pipe_exec_info->i < pipe_exec_info->cmd_info->c_pipe)
 	{
 		dup2(pipe_exec_info->pipe_fd[1], STDOUT_FILENO);
-		close(pipe_exec_info->pipe_fd[1]);
-		close(pipe_exec_info->pipe_fd[0]);
 	}
+	if (pipe_exec_info->pipe_fd[0] != -1)
+		close(pipe_exec_info->pipe_fd[0]);
+	if (pipe_exec_info->pipe_fd[1] != -1)
+		close(pipe_exec_info->pipe_fd[1]);
 }
+
+
 
 int	execute_child_process_pipe_helper(t_pipe_exec_info *pipe_exec_info)
 {

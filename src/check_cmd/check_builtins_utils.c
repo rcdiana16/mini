@@ -12,19 +12,52 @@
 
 #include "../../include/minishell.h"
 
-int	check_builtins(char **cmd, t_env *env_mini, t_command *cmd_info, \
-	char **path)
+static int is_variable_assignment(const char *str)
 {
-	int	exit;
+	int i;
 
-	exit = 0;
-	if (!cmd)
+	if (!str || !*str)
 		return (0);
-	exit = check_standard_builtins(cmd, env_mini, &cmd_info, path);
-	if (exit != -1)
-		return (exit);
-	exit = check_env_builtins(cmd, env_mini);
-	if (exit != -1)
-		return (exit);
-	return (-1);
+	if (!ft_isalpha(str[0]) && str[0] != '_')
+		return (0);
+	i = 1;
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (str[i] == '=');
+}
+
+static int handle_variable_assignment(t_env *env_mini, char *cmd)
+{
+	char **tokens;
+	int ret;
+
+	tokens = get_tokens(cmd);
+	if (!tokens)
+		return (1);
+	ret = handle_export_arg(env_mini, cmd);
+	free_arr(tokens);
+	return (ret);
+}
+
+int	check_builtins(char **cmd, t_env *env_mini, t_command *cmd_info, \
+		char **path)
+{
+		int	exit;
+
+		exit = 0;
+		if (!cmd)
+			return (0);
+		if (cmd[0] && is_variable_assignment(cmd[0]))
+			return (handle_variable_assignment(env_mini, cmd[0]));
+		exit = check_standard_builtins(cmd, env_mini, &cmd_info, path);
+		if (exit != -1)
+			return (exit);
+		exit = check_env_builtins(cmd, env_mini);
+		if (exit != -1)
+			return (exit);
+		return (-1);
 }
