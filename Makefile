@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+         #
+#    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 11:45:57 by diana             #+#    #+#              #
-#    Updated: 2025/05/20 18:32:46 by maximemarti      ###   ########.fr        #
+#    Updated: 2025/05/21 02:30:22 by diana            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS            = main.c \
 					src/input/get_input.c \
 					src/input/get_input_read.c \
 					src/input/get_input_utils.c \
+					src/input/get_strjoin.c \
 					src/input/utils_input.c \
 					src/input/utils_input_2.c \
 					src/input/utils_replace_tok.c \
@@ -51,6 +52,7 @@ SRCS            = main.c \
 					src/execute/execute_pipe_utils.c \
 					src/execute/execute_pipe_utils_handle.c \
 					src/execute/execute_pipe_utils_bis.c \
+					src/execute/execute_child_auxiliar.c \
 					src/execute/utils_pipe.c \
 					src/execute/util.c \
 					src/execute/utils_execute.c \
@@ -63,6 +65,7 @@ SRCS            = main.c \
 					src/check_cmd/check_builtins.c \
 					src/check_cmd/check_builtins_utils.c \
 					src/ft_list/list.c \
+					src/ft_list/list_node.c \
 					src/free/free.c \
 					src/free/free_bis.c \
 					src/builtins/pwd.c \

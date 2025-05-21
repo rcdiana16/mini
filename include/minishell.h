@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/20 18:34:49 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/21 02:28:12 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,12 @@ typedef struct s_split_ctx
 	int		index;
 }	t_split_ctx;
 
-
 extern volatile sig_atomic_t	g_heredoc_interrupted;
 
 //----------------------------builtins---------------------------------
 //----cd_utils.c----
 void		update_env(t_env *env, char *new_path, \
-	char *env_to_update, int flag);
+			char *env_to_update, int flag);
 void		update_pwd_env(t_env *env_mini, char *oldpwd, char *path);
 int			print_cd_error(char *path);
 
@@ -261,7 +260,6 @@ int			execute_child_process_pipe(char **cmd_info, char **path_sp_w_slash, \
 //----execute_pipe_utils.c----
 int			execute_pipes(t_command *cmd_info, \
 	char **path_sp_w_slash, t_env *env_list);
-int			child_process_execute_command(t_pipe_exec_info *pipe_exec_info);
 
 //----execute_pipe_utils_bis.c----
 char		*find_builtin_or_exit_pipe(char **path_sp_w_slash, char **cmd_inf, \
@@ -270,6 +268,9 @@ char		**allocate_cleaned_cmd(char **cmd_tokens);
 
 //----execute_pipe_utils_handle.c----
 int			handle_redirection_and_builtins(t_pipe_exec_info *pipe_exec_info);
+
+//----execute_child_auxiliar.c----
+int			child_process_execute_command(t_pipe_exec_info *pipe_exec_info);
 
 //----utils_pipe.c----
 int			get_pipe_bounds(t_command *cmd_info, int i, int *start, int *end);
@@ -306,6 +307,12 @@ void		free_arr(char **tok);
 //----list.c----
 t_env		*initialize_environment(char **env, t_env *env_list);
 
+//----list_node.c----
+void		append_node(t_env **head, char *var, char *val);
+t_env		*create_node(char *var, char *val);
+void		update_or_append_node(t_env **env_list, const char *key, \
+			char *value);
+
 //----------------------------input----------------------------
 //----get_input.c----
 void		handle_eof_or_empty(char *line, t_shell *shell, t_env *env_mini, \
@@ -321,8 +328,10 @@ t_command	*verify_and_split_command(char *cmd, t_env *env_mini, \
 char		*read_command_line(int mode);
 
 //----get_input_utils.c----
-char		**ft_strjoin_arr(char *first, char **arr);
 char		**tokenize_quotes(char *input);
+
+//----get_strjoin.c----
+char		**ft_strjoin_arr(char *first, char **arr);
 
 //----handle_input.c----
 char		*make_good_cmd2(char *cmd);

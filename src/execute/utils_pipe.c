@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:52:12 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/20 21:24:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:13:56 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
 		dup2(pipe_exec_info->prev_pipe_fd, STDIN_FILENO);
 		close(pipe_exec_info->prev_pipe_fd);
 	}
-
 	if (pipe_exec_info->cmd_info->file_out)
 	{
 		dup2(pipe_exec_info->cmd_info->fd_out, STDOUT_FILENO);
@@ -94,8 +93,6 @@ void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
 	if (pipe_exec_info->pipe_fd[1] != -1)
 		close(pipe_exec_info->pipe_fd[1]);
 }
-
-
 
 int	execute_child_process_pipe_helper(t_pipe_exec_info *pipe_exec_info)
 {

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:20:16 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/07 17:13:19 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:57:26 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	ft_our_env(t_env *env_mini, char **cmd)
 		return (0);
 	while (env_mini)
 	{
-		ft_printf("%s=%s\n", env_mini->variable, env_mini->value);
+		if (ft_strncmp(env_mini->value, "\0", 2) != 0)
+			ft_printf("%s=%s\n", env_mini->variable, env_mini->value);
 		env_mini = env_mini->next;
 	}
 	return (0);

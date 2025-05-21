@@ -6,15 +6,15 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:51:41 by diana             #+#    #+#             */
-/*   Updated: 2025/05/05 17:52:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:04:04 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static int is_variable_assignment(const char *str)
+static int	is_variable_assignment(const char *str)
 {
-	int i;
+	int	i;
 
 	if (!str || !*str)
 		return (0);
@@ -30,10 +30,10 @@ static int is_variable_assignment(const char *str)
 	return (str[i] == '=');
 }
 
-static int handle_variable_assignment(t_env *env_mini, char *cmd)
+static int	handle_variable_assignment(t_env *env_mini, char *cmd)
 {
-	char **tokens;
-	int ret;
+	char	**tokens;
+	int		ret;
 
 	tokens = get_tokens(cmd);
 	if (!tokens)
@@ -46,18 +46,18 @@ static int handle_variable_assignment(t_env *env_mini, char *cmd)
 int	check_builtins(char **cmd, t_env *env_mini, t_command *cmd_info, \
 		char **path)
 {
-		int	exit;
+	int	exit;
 
-		exit = 0;
-		if (!cmd)
-			return (0);
-		if (cmd[0] && is_variable_assignment(cmd[0]))
-			return (handle_variable_assignment(env_mini, cmd[0]));
-		exit = check_standard_builtins(cmd, env_mini, &cmd_info, path);
-		if (exit != -1)
-			return (exit);
-		exit = check_env_builtins(cmd, env_mini);
-		if (exit != -1)
-			return (exit);
-		return (-1);
+	exit = 0;
+	if (!cmd)
+		return (0);
+	if (cmd[0] && is_variable_assignment(cmd[0]))
+		return (handle_variable_assignment(env_mini, cmd[0]));
+	exit = check_standard_builtins(cmd, env_mini, &cmd_info, path);
+	if (exit != -1)
+		return (exit);
+	exit = check_env_builtins(cmd, env_mini);
+	if (exit != -1)
+		return (exit);
+	return (-1);
 }
