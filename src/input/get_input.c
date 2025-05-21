@@ -28,7 +28,7 @@ void	handle_eof_or_empty(char *line, t_shell *shell, t_env *env_mini, \
 	}
 	if (*line == '\0')
 		free(line);
-	if (ft_strncmp(line, "\"\"", 2) == 0)
+	else if (ft_strncmp(line, "\"\"", 2) == 0)
 	{
 		free(line);
 		shell->exit_code = 127;

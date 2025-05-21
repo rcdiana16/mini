@@ -77,3 +77,13 @@ long long	ft_atoll(const char *str)
 	}
 	return (result * sign);
 }
+
+int	ft_arrlen(char **arr)
+{
+	int i;
+
+	i = -1;
+	while (arr && arr[i])
+		i++;
+	return (i);
+}

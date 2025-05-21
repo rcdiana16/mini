@@ -32,7 +32,7 @@ static char	**handle_single_equal(char *cmd)
 {
 	return (ft_split(cmd, '='));
 }
-
+/*
 static void	append_rest_tokens(char **tokens, char **rest_tokens)
 {
 	int	i;
@@ -49,8 +49,33 @@ static void	append_rest_tokens(char **tokens, char **rest_tokens)
 		j++;
 	}
 	tokens[i] = NULL;
+}*/
+
+static char	**append_rest_tokens(char **tokens, char **rest_tokens)
+{
+	char	**new_tokens;
+	int		t_len;
+	int		r_len;
+	int		i;
+	int		j;
+
+	t_len = ft_arrlen(tokens);
+	r_len = ft_arrlen(rest_tokens);
+	new_tokens = malloc(sizeof(char *) * (t_len + r_len + 1));
+	if (!new_tokens)
+		return (NULL);
+	i = -1;
+	while (++i < t_len)
+		new_tokens[i] = tokens[i];
+	j = -1;
+	while (++j < r_len)
+		new_tokens[i + j] = rest_tokens[j];
+	new_tokens[i + j] = NULL;
+	free(tokens);
+	return (new_tokens);
 }
 
+/*
 static char	**handle_multiple_equals(char *cmd)
 {
 	char	*first_equal;
@@ -66,6 +91,23 @@ static char	**handle_multiple_equals(char *cmd)
 	append_rest_tokens(tokens, rest_tokens);
 	free(rest_tokens);
 	return (tokens);
+}*/
+static char	**handle_multiple_equals(char *cmd)
+{
+	char	*first_equal;
+	char	*rest;
+	char	**tokens;
+	char	**rest_tokens;
+	char	**combined_tokens;
+
+	first_equal = ft_strchr(cmd, '=');
+	*first_equal = '\0';
+	rest = first_equal + 1;
+	tokens = ft_split(cmd, ' ');
+	rest_tokens = ft_split(rest, ' ');
+	combined_tokens = append_rest_tokens(tokens, rest_tokens);
+	free(rest_tokens);
+	return (combined_tokens);
 }
 
 char	**get_tokens(char *cmd)

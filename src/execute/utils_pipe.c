@@ -87,12 +87,29 @@ void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
 	else if (pipe_exec_info->i < pipe_exec_info->cmd_info->c_pipe)
 	{
 		dup2(pipe_exec_info->pipe_fd[1], STDOUT_FILENO);
-	}
-	if (pipe_exec_info->pipe_fd[0] != -1)
-		close(pipe_exec_info->pipe_fd[0]);
-	if (pipe_exec_info->pipe_fd[1] != -1)
-		close(pipe_exec_info->pipe_fd[1]);
+		if (pipe_exec_info->pipe_fd[0] != -1)
+			close(pipe_exec_info->pipe_fd[0]);
+		if (pipe_exec_info->pipe_fd[1] != -1)
+			close(pipe_exec_info->pipe_fd[1]);
+	}	
 }
+/*
+void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
+{
+	if (pipe_exec_info->prev_pipe_fd != -1)
+	{
+		dup2(pipe_exec_info->prev_pipe_fd, STDIN_FILENO);
+		close(pipe_exec_info->prev_pipe_fd);
+	}
+	if (pipe_exec_info->i < pipe_exec_info->cmd_info->c_pipe)
+	{
+		dup2(pipe_exec_info->pipe_fd[1], STDOUT_FILENO);
+		if (pipe_exec_info->pipe_fd[1] != -1)
+			close(pipe_exec_info->pipe_fd[1]);
+		if (pipe_exec_info->pipe_fd[0] != -1)
+			close(pipe_exec_info->pipe_fd[0]);
+	}
+}*/
 
 int	execute_child_process_pipe_helper(t_pipe_exec_info *pipe_exec_info)
 {
