@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:52:12 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/21 00:13:56 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 19:27:12 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,25 +91,8 @@ void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
 			close(pipe_exec_info->pipe_fd[0]);
 		if (pipe_exec_info->pipe_fd[1] != -1)
 			close(pipe_exec_info->pipe_fd[1]);
-	}	
+	}
 }
-/*
-void	child_process_setup_io(t_pipe_exec_info *pipe_exec_info)
-{
-	if (pipe_exec_info->prev_pipe_fd != -1)
-	{
-		dup2(pipe_exec_info->prev_pipe_fd, STDIN_FILENO);
-		close(pipe_exec_info->prev_pipe_fd);
-	}
-	if (pipe_exec_info->i < pipe_exec_info->cmd_info->c_pipe)
-	{
-		dup2(pipe_exec_info->pipe_fd[1], STDOUT_FILENO);
-		if (pipe_exec_info->pipe_fd[1] != -1)
-			close(pipe_exec_info->pipe_fd[1]);
-		if (pipe_exec_info->pipe_fd[0] != -1)
-			close(pipe_exec_info->pipe_fd[0]);
-	}
-}*/
 
 int	execute_child_process_pipe_helper(t_pipe_exec_info *pipe_exec_info)
 {

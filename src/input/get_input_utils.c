@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_input_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:55:02 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/21 10:15:04 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/21 19:15:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*DIANA NUEVO ARCHIVO
-char	**ft_strjoin_arr(char *first, char **arr)
-{
-	int		i;
-	int		len;
-	char	**new_arr;
-
-	len = 0;
-	while (arr && arr[len])
-		len++;
-	new_arr = malloc(sizeof(char *) * (len + 2));
-	if (!new_arr)
-		return (NULL);
-	new_arr[0] = ft_strdup(first);
-	i = 0;
-	while (i < len)
-	{
-		new_arr[i + 1] = ft_strdup(arr[i]);
-		i++;
-	}
-	new_arr[len + 1] = NULL;
-	free_arr(arr);
-	return (new_arr);
-}*/
 
 static void	update_quote_flags(char c, bool *single, bool *double_q)
 {

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:18:11 by diana             #+#    #+#             */
-/*   Updated: 2025/05/21 02:24:45 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 19:16:33 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,48 +66,6 @@ static int	handle_redirection_bis(t_pipe_exec_info *pipe_exec_info)
 		return (1);
 	return (0);
 }
-
-/*DIANA cut it in the 3 previous functions
-static int	handle_redirection_bis(t_pipe_exec_info *pipe_exec_info)
-{
-	if (pipe_exec_info->cmd_info->file_in)
-	{
-		if (pipe_exec_info->cmd_info->fd_in != -1)
-		{
-			dup2(pipe_exec_info->cmd_info->fd_in, STDIN_FILENO);
-			close(pipe_exec_info->cmd_info->fd_in);
-		}
-		else
-		{
-			free_arr(pipe_exec_info->current_command);
-			free_all(pipe_exec_info->cmd_info, pipe_exec_info->path_sp_w_slash, \
-					pipe_exec_info->env_list);
-			close(0);
-			close(1);
-			get_next_line(-42);
-			return (1);
-		}
-	}
-	if (pipe_exec_info->cmd_info->file_out)
-	{
-		if (pipe_exec_info->cmd_info->fd_out != -1)
-		{
-			dup2(pipe_exec_info->cmd_info->fd_out, STDOUT_FILENO);
-			close(pipe_exec_info->cmd_info->fd_out);
-		}
-		else
-		{
-			free_arr(pipe_exec_info->current_command);
-			free_all(pipe_exec_info->cmd_info, pipe_exec_info->path_sp_w_slash, \
-					pipe_exec_info->env_list);
-			close(0);
-			close(1);
-			get_next_line(-42);
-			return (1);
-		}
-	}
-	return (0);
-}*/
 
 static int	handle_builtin(t_pipe_exec_info *pipe_exec_info)
 {

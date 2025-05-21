@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:08:21 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/07 07:45:30 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/21 18:40:16 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ long long	ft_atoll(const char *str)
 
 int	ft_arrlen(char **arr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (arr && arr[i])
