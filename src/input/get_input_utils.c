@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:55:02 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/21 01:28:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 10:15:04 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,22 @@ static void	add_token(char ***tokens, char *start, int *count)
 	(*tokens)[*count] = NULL;
 }
 
-static void	handle_pipe_token(char ***tokens, char *start, char *p, int *count)
+static void	handle_pipe_token(char ***tokens, char **start, char *p, int *count)
 {
 	char	tmp;
 	char	pipe_str[2];
 
-	if (p != start)
+	if (p != *start)
 	{
 		tmp = *p;
 		*p = '\0';
-		add_token(tokens, start, count);
+		add_token(tokens, *start, count);
 		*p = tmp;
 	}
 	pipe_str[0] = *p;
 	pipe_str[1] = '\0';
 	add_token(tokens, pipe_str, count);
+	*start = p + 1;
 }
 
 static void	process2_tokens(char *input, char ***tokens, bool *s_q, bool *d_q)
@@ -91,14 +92,14 @@ static void	process2_tokens(char *input, char ***tokens, bool *s_q, bool *d_q)
 			start = p + 1;
 		}
 		else if (*p == '|' && !(*s_q) && !(*d_q))
-			handle_pipe_token(tokens, start, p, &count);
+			handle_pipe_token(tokens, &start, p, &count);
 		p++;
 	}
 	if (*start)
 		add_token(tokens, start, &count);
 }
 
-/* DIANA
+/*
 static void	process2_tokens(char *input, char ***tokens, bool *s_q, bool *d_q)
 {
 	int		count;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 18:27:15 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/20 22:05:05 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/21 10:16:08 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	should_split_at(char *token, int i)
 		return (1);
 	if (i == 0)
 		return (0);
-	if ((token[i] == '>' && token[i + 1] == '>') || \
-		(token[i] == '<' && token[i + 1] == '<'))
+	if (((token[i] == '>' && token[i + 1] == '>') || \
+		(token[i] == '<' && token[i + 1] == '<')) && ft_strlen(token) > 1)
 		return (1);
 	if (i > 0 && ((token[i - 1] == '>' && token[i] == '>') || \
 			(token[i - 1] == '<' && token[i] == '<')))
-		return (1);
+		return (0);
 	return (1);
 }
 
