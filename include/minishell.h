@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:46:38 by maximemarti       #+#    #+#             */
-/*   Updated: 2025/05/21 02:28:12 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/22 10:06:59 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -443,6 +443,7 @@ void		handle_sigquit(int sig);
 char		*get_env_value(t_env *env_mini, const char *var);
 int			process_exit_code(char *result, int j, t_shell *shell);
 long long	ft_atoll(const char *str);
+int			ft_arrlen(char **arr);
 
 //----main_utils.c----
 void		handle_cmd_info(t_command *cmd_info);
