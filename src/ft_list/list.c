@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:08:20 by cosmos            #+#    #+#             */
-/*   Updated: 2025/05/21 19:17:34 by diana            ###   ########.fr       */
+/*   Updated: 2025/05/22 16:47:56 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ t_env	*get_list_env(char **envp, t_env *env_list)
 		if (equal_sign)
 		{
 			*equal_sign = '\0';
-			append_node(&env_list, envp[i], equal_sign + 1);
+			if (ft_strncmp(envp[i], "OLDPWD", 7) != 0)
+				append_node(&env_list, envp[i], equal_sign + 1);
 			*equal_sign = '=';
 		}
 		i++;

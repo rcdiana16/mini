@@ -6,7 +6,7 @@
 /*   By: maximemartin <maximemartin@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:02:56 by cosmos            #+#    #+#             */
-/*   Updated: 2025/04/28 11:15:58 by maximemarti      ###   ########.fr       */
+/*   Updated: 2025/05/22 16:49:56 by maximemarti      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	update_env(t_env *env, char *new_path, char *env_to_update, int flag)
 	if (!new_path | ! env_to_update)
 		return ;
 	current_pwd = get_env_value(env, env_to_update);
+	if (!current_pwd && ft_strncmp(env_to_update, "OLDPWD", 7) == 0)
+	{
+		append_node(&env, env_to_update, new_path);
+		return ;
+	}
 	if (!current_pwd)
 		return ;
 	while (env)
