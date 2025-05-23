@@ -82,7 +82,9 @@ int	ft_arrlen(char **arr)
 {
 	int	i;
 
-	i = -1;
+	i = 1;
+	if (!arr)
+		return (1);
 	while (arr && arr[i])
 		i++;
 	return (i);

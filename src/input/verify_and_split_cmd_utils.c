@@ -60,8 +60,10 @@ t_command	*handle_token_error(t_command *cmd_info, t_shell *shell, \
 {
 	if (!bad_token)
 	{
-		ft_putstr_fd("minishell: syntax error near unexpected "
-			"token `newline'\n", 2);
+		close_fd(cmd_info);
+		shell->exit_code = code;
+		free_command(cmd_info);
+		return (NULL);
 	}
 	else if (code == 3)
 		return (handle_code_3(cmd_info, shell));
